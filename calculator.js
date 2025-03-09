@@ -22,13 +22,21 @@ const calcSubtract = (num1, num2) => num1 - num2;
 const calcMultiply = (num1, num2) => num1 * num2;
 const calcDivide = (num1, num2) => num1 / num2;
 
+display.textContent = '0';
+
 let numInput1 = '';
 let numInput2 = '';
 let operator = '';
 
 const clickButton = (e) => {
-    console.log(e.target.innerHTML);
-    switch(e.target.innerHTML) {
+    console.log(e.target.textContent);
+    switch(e.target.textContent) {
+        case 'c':
+            numInput1 = '';
+            numInput2 = '';
+            operator = '';
+            display.textContent = '0';
+            break;
         case '1':
         case '2':
         case '3':
@@ -39,8 +47,19 @@ const clickButton = (e) => {
         case '8':
         case '9':
         case '0':
-            numInput1 += e.target.innerHTML;
-            display.innerHTML = numInput1;
+            if (operator === '') {
+                numInput1 += e.target.textContent;
+                display.textContent = numInput1;
+            } else {
+                numInput2 += e.target.textContent;
+                display.textContent = numInput2;
+            }
+            break;
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+            operator = e.target.textContent;
             break;
     }
 };
