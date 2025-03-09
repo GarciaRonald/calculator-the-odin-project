@@ -1,0 +1,34 @@
+* {
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#calculator {
+    border: solid;
+    border-radius: 5px;
+    width: 250px;
+    margin: 50px auto;
+}
+
+#display {
+    border: solid;
+    border-radius: 5px;
+    width: 85%;
+    height: 30px;
+    margin: 20px auto;
+    padding: 5px;
+    text-align: right;
+}
+
+#container-buttons {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
