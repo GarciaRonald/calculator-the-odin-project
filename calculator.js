@@ -11,6 +11,7 @@ const btn7 = document.querySelector('#button-7');
 const btn8 = document.querySelector('#button-8');
 const btn9 = document.querySelector('#button-9');
 const btn0 = document.querySelector('#button-0');
+const btnDot = document.querySelector('#button-dot');
 const btnAdd = document.querySelector('#button-add');
 const btnSub = document.querySelector('#button-sub');
 const btnMul = document.querySelector('#button-mul');
@@ -31,7 +32,12 @@ let operator = '';
 let result = '';
 
 const clickButton = (e) => {
-    console.log(e.target.textContent);
+    if (display.textContent === 'Error') {
+        numInput1 = '';
+        numInput2 = '';
+        operator = '';
+        result = '';
+    }
     switch(e.target.textContent) {
         case 'c':
             numInput1 = '';
@@ -49,6 +55,15 @@ const clickButton = (e) => {
         case '8':
         case '9':
         case '0':
+        case '.':
+            if (result) {
+                numInput1 = '';
+                numInput2 = '';
+                operator = '';
+                numInput1 += e.target.textContent;
+                display.textContent = numInput1;
+                break
+            }
             if (!operator) {
                 numInput1 += e.target.textContent;
                 display.textContent = numInput1;
@@ -59,11 +74,28 @@ const clickButton = (e) => {
             break;
         case '+':
         case '-':
-        case '*':
-        case '/':
+        case 'x':
+        case '÷':
+            if (!numInput1 && !numInput2) {
+                display.textContent = 'Error';
+                numInput1 = '';
+                numInput2 = '';
+                operator = '';
+                break;
+            }
+            if (result || (numInput1 && numInput2 && operator)) {
+                result = operate(numInput1 * 1, operator, numInput2 * 1);
+                display.textContent = result;
+                numInput1 = result;
+                numInput2 = '';
+            }
             operator = e.target.textContent;
             break;
         case '=':
+            if (!numInput1 || !numInput2 || !operator) {
+                display.textContent = 'Error';
+                break;
+            }
             result = operate(numInput1 * 1, operator, numInput2 * 1);
             display.textContent = result;
             break;
@@ -77,11 +109,12 @@ const operate = (num1, oper, num2) => {
     if (oper === '-') {
         return calcSubtract(num1, num2);
     }
-    if (oper === '*') {
+    if (oper === 'x') {
         return calcMultiply(num1, num2);
     }
-    if (oper === '/') {
-        return calcDivide(num1, num2);
+    if (oper === '÷') {
+        let divResult = calcDivide(num1, num2);
+        return divResult === Infinity ? 'Error: Div by 0' : divResult;
     }
 };
 
@@ -95,6 +128,7 @@ btn7.addEventListener('click', clickButton);
 btn8.addEventListener('click', clickButton);
 btn9.addEventListener('click', clickButton);
 btn0.addEventListener('click', clickButton);
+btnDot.addEventListener('click', clickButton);
 btnAdd.addEventListener('click', clickButton);
 btnSub.addEventListener('click', clickButton);
 btnMul.addEventListener('click', clickButton);
