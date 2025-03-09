@@ -15,6 +15,7 @@ const btnAdd = document.querySelector('#button-add');
 const btnSub = document.querySelector('#button-sub');
 const btnMul = document.querySelector('#button-mul');
 const btnDiv = document.querySelector('#button-div');
+const btnEqual = document.querySelector('#button-equal');
 const btnClear = document.querySelector('#button-c');
 
 const calcAdd = (num1, num2) => num1 + num2;
@@ -90,4 +91,5 @@ btnAdd.addEventListener('click', clickButton);
 btnSub.addEventListener('click', clickButton);
 btnMul.addEventListener('click', clickButton);
 btnDiv.addEventListener('click', clickButton);
+btnEqual.addEventListener('click', clickButton);
 btnClear.addEventListener('click', clickButton);
