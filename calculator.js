@@ -49,7 +49,7 @@ const clickButton = (e) => {
         case '8':
         case '9':
         case '0':
-            if (operator === '') {
+            if (!operator) {
                 numInput1 += e.target.textContent;
                 display.textContent = numInput1;
             } else {
@@ -73,11 +73,14 @@ const clickButton = (e) => {
 const operate = (num1, oper, num2) => {
     if (oper === '+') {
         return calcAdd(num1, num2);
-    } else if (oper === '-') {
+    }
+    if (oper === '-') {
         return calcSubtract(num1, num2);
-    } else if (oper === '*') {
+    }
+    if (oper === '*') {
         return calcMultiply(num1, num2);
-    } else if (oper === '/') {
+    }
+    if (oper === '/') {
         return calcDivide(num1, num2);
     }
 };
