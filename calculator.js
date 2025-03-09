@@ -28,6 +28,7 @@ display.textContent = '0';
 let numInput1 = '';
 let numInput2 = '';
 let operator = '';
+let result = '';
 
 const clickButton = (e) => {
     console.log(e.target.textContent);
@@ -61,6 +62,10 @@ const clickButton = (e) => {
         case '*':
         case '/':
             operator = e.target.textContent;
+            break;
+        case '=':
+            result = operate(numInput1 * 1, operator, numInput2 * 1);
+            display.textContent = result;
             break;
     }
 };
