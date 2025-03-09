@@ -6,9 +6,9 @@
 }
 
 #calculator {
-    border: solid;
-    border-radius: 5px;
-    width: 250px;
+    border: 5px solid;
+    border-radius: 10px;
+    width: 400px;
     margin: 50px auto;
 }
 
@@ -16,19 +16,34 @@
     border: solid;
     border-radius: 5px;
     width: 85%;
-    height: 30px;
-    margin: 20px auto;
+    height: 50px;
+    margin: 40px auto;
     padding: 5px;
     text-align: right;
+    font-size: 30px;
+    letter-spacing: 5px;
 }
 
 #container-buttons {
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 .button {
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 60px;
     margin: 5px;
+    font-weight: bold;
+    font-size: 30px;
+    border: 0.8px solid;
+    border-radius: 5px;
+}
+
+.math {
+    background-color: rgb(196, 190, 190);
+}
+
+.general {
+    background-color: gray;
+    color: white;
 }
